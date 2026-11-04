@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Khám phá dữ liệu khách hàng, xử lý RFM và phân cụm FCM trên localhost.">
+  <title>Phân cụm khách hàng · Customer Lab</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Customer Lab — Trang chủ"><span class="brand-icon" aria-hidden="true">▦</span> Customer<span>Lab</span></a>
+    <span class="local-badge"><span aria-hidden="true">●</span> Không gian phân tích · Localhost</span>
+  </header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">PHÂN TÍCH KHÁCH HÀNG</p><h1>Từ dữ liệu đến nhóm khách hàng.</h1><p class="subtitle">Làm sạch giao dịch, xây dựng hồ sơ RFM và khám phá các cụm khách hàng bằng FCM.</p></div>
+      <div class="source"><span class="file-icon" aria-hidden="true">▤</span><div><small>NGUỒN DỮ LIỆU</small><strong>data.csv</strong></div></div>
+    </section>
+
+    <section class="workflow" aria-label="Các bước phân tích">
+      <div class="step current" data-step="raw"><span class="step-number">01</span><div><strong>Dữ liệu gốc</strong><small>Giao dịch chưa xử lý</small></div><span class="step-state">Đang xem</span></div>
+      <div class="step" data-step="processed"><span class="step-number">02</span><div><strong>Xử lý RFM</strong><small>Hồ sơ theo khách hàng</small></div><span class="step-state">Chưa chạy</span></div>
+      <div class="step" data-step="clustered"><span class="step-number">03</span><div><strong>Phân cụm FCM</strong><small>Gán nhãn cụm tự động</small></div><span class="step-state">Chưa chạy</span></div>
+    </section>
+
+    <section class="workspace" aria-label="Bảng dữ liệu khách hàng">
+      <div class="workspace-heading">
+        <div><p class="eyebrow" id="table-kicker">DỮ LIỆU ĐẦU VÀO</p><h2 id="table-title">Dữ liệu giao dịch</h2><p id="table-description">Toàn bộ dữ liệu ban đầu, giữ nguyên các cột và giá trị từ file CSV.</p></div>
+        <div class="actions"><button class="button secondary" id="process-button" disabled>Phân cụm khách hàng <span aria-hidden="true">→</span></button><button class="button primary" id="cluster-button" hidden disabled>Phân cụm bằng FCM <span aria-hidden="true">→</span></button></div>
+      </div>
+      <div class="table-toolbar">
+        <nav class="tabs" aria-label="Chọn bảng dữ liệu">
+          <button class="tab active" data-table="raw" aria-current="page">Dữ liệu gốc</button>
+          <button class="tab" data-table="processed" disabled>Sau xử lý</button>
+          <button class="tab" data-table="clustered" disabled>Kết quả FCM</button>
+        </nav>
+        <span class="row-count" id="row-count">Đang đọc dữ liệu…</span>
+      </div>
+      <div class="status" id="status" role="status" aria-live="polite"><span class="spinner" aria-hidden="true"></span><span id="status-text">Đang đọc data.csv…</span></div>
+      <div class="error" id="error" role="alert" hidden><span id="error-text"></span><button id="retry-button" class="retry">Thử lại</button></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Bảng dữ liệu, cuộn ngang để xem thêm cột" aria-busy="true" id="table-region">
+        <table id="data-table"><caption class="sr-only" id="table-caption">Dữ liệu giao dịch</caption><thead id="table-head"></thead><tbody id="table-body"></tbody></table>
+        <div class="empty" id="empty" hidden>Không có dữ liệu để hiển thị.</div>
+      </div>
+      <div class="pagination">
+        <span id="range">50 dòng mỗi trang</span>
+        <div class="page-controls"><button id="previous" class="page-button" aria-label="Trang trước" disabled>←</button><form id="page-form"><label for="page-input">Trang</label><input id="page-input" type="number" min="1" value="1" disabled><span id="page-total">/ —</span><button class="sr-only" type="submit">Đến trang</button></form><button id="next" class="page-button" aria-label="Trang tiếp theo" disabled>→</button></div>
+      </div>
+    </section>
+    <aside class="note"><span aria-hidden="true">ⓘ</span><p id="note-text">Bắt đầu với dữ liệu gốc. Nhấn “Phân cụm khách hàng” để làm sạch và tính các chỉ số RFM.</p></aside>
+    <footer><span>Customer Lab <span aria-hidden="true">/</span> RFM & Fuzzy C-Means</span><span>Dữ liệu được xử lý trên máy của bạn</span></footer>
+  </main>
+</body>
+</html>

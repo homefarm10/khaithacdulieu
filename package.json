@@ -1,0 +1,12 @@
+{
+  "name": "customer-clustering-local",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Giao diện localhost cho xử lý RFM và phân cụm FCM",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/server.test.js && python -m unittest discover -s tests -p test_*.py"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": { "express": "^5.1.0" }
+}
